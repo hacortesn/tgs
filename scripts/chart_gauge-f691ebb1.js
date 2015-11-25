@@ -1,16 +1,23 @@
-var span2 = $(".span2").slider().on("slide", function (e){
-   var value  = span2.getValue();
-   chart.load({columns: [['data', value]]});
+var sliderH = $("#slider-H").slider({
+    reversed: true
+}).on("slide", function (e) {
+    var value = sliderH.getValue();
+    chart.load({columns: [['data', value]]});
 }).data('slider');
+
+/*var span2 = $(".span2").slider().on("slide", function (e){
+ var value  = span2.getValue();
+ chart.load({columns: [['data', value]]});
+ }).data('slider');*/
 
 
 var total = 1;
 
 var chart = c3.generate({
-    bindto: "#chart-1",
+    bindto: "#chart-H",
     data: {
         columns: [
-            ['data', 91.4]
+            ['data', sliderH.getValue()]
         ],
         type: 'gauge',
         onclick: function (d, i) {
@@ -53,31 +60,31 @@ var chart = c3.generate({
 });
 
 /*setTimeout(function () {
-    chart.load({
-        columns: [['data', 10]]
-    });
-}, 1000);
+ chart.load({
+ columns: [['data', 10]]
+ });
+ }, 1000);
 
-setTimeout(function () {
-    chart.load({
-        columns: [['data', 50]]
-    });
-}, 2000);
+ setTimeout(function () {
+ chart.load({
+ columns: [['data', 50]]
+ });
+ }, 2000);
 
-setTimeout(function () {
-    chart.load({
-        columns: [['data', 70]]
-    });
-}, 3000);
+ setTimeout(function () {
+ chart.load({
+ columns: [['data', 70]]
+ });
+ }, 3000);
 
-setTimeout(function () {
-    chart.load({
-        columns: [['data', 0]]
-    });
-}, 4000);
+ setTimeout(function () {
+ chart.load({
+ columns: [['data', 0]]
+ });
+ }, 4000);
 
-setTimeout(function () {
-    chart.load({
-        columns: [['data', 100]]
-    });
-}, 5000);*/
+ setTimeout(function () {
+ chart.load({
+ columns: [['data', 100]]
+ });
+ }, 5000);*/
