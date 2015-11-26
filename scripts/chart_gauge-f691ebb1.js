@@ -1,9 +1,29 @@
-var sliderH = $("#slider-H").slider({
-    reversed: true
-}).on("slide", function (e) {
-    var value = sliderH.getValue();
-    chart.load({columns: [['data', value]]});
-}).data('slider');
+var init = ["J", "Q", "H"]
+$(".slider").each(function (i, e) {
+    var id = $(e).attr("id");
+
+    window[id] = $("#" + id).slider({
+        reversed: true
+    }).on("slide", function (e) {
+        var chart = $(e.target).attr("data-component");
+        var value = e.value;
+
+        for (var x in init) {
+            var component = "slider-" + init[x];
+            if (component != id)
+                window[component].setValue(value)
+            console.log("c " + component + "; id" + id)
+
+        }
+
+
+        //var value = sliderH.getValue();
+        console.log("id = " + chart);
+        window["chart-" + chart].load({columns: [['data', value]]});
+    }).data('slider');
+
+});
+
 
 /*var span2 = $(".span2").slider().on("slide", function (e){
  var value  = span2.getValue();
@@ -13,28 +33,31 @@ var sliderH = $("#slider-H").slider({
 
 var total = 1;
 
-var chart = c3.generate({
-    bindto: "#chart-H",
-    data: {
-        columns: [
-            ['data', sliderH.getValue()]
-        ],
-        type: 'gauge',
-        onclick: function (d, i) {
-            console.log("onclick", d, i);
-        },
-        onmouseover: function (d, i) {
-            console.log("onmouseover", d, i);
-        },
-        onmouseout: function (d, i) {
-            console.log("onmouseout", d, i);
-        },
-        onmouseclick: function (d, i) {
-            console.log("click ", "-" + d + "-", i);
-        }
 
-    },
-    gauge: {
+$(".chart").each(function (i, e) {
+    var chart = $(e).attr("id")
+    window[chart] = c3.generate({
+        bindto: "#" + chart,
+        data: {
+            columns: [
+                ['data', 50]
+            ],
+            type: 'gauge',
+            onclick: function (d, i) {
+                console.log("onclick", d, i);
+            },
+            onmouseover: function (d, i) {
+                console.log("onmouseover", d, i);
+            },
+            onmouseout: function (d, i) {
+                console.log("onmouseout", d, i);
+            },
+            onmouseclick: function (d, i) {
+                console.log("click ", "-" + d + "-", i);
+            }
+
+        },
+        gauge: {
 //        label: {
 //            format: function(value, ratio) {
 //                return value;
@@ -45,46 +68,39 @@ var chart = c3.generate({
 //    max: 100, // 100 is default
 //    units: ' %',
 //    width: 39 // for adjusting arc thickness
-    },
-    color: {
-        pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
-        threshold: {
+        },
+        color: {
+            pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044', '#60B044', '#F6C600', '#F97600', '#FF0000',], // the three color levels for the percentage values.
+            threshold: {
 //            unit: 'value', // percentage is default
 //            max: 200, // 100 is default
-            values: [30, 60, 90, 100]
+                values: [25, 36, 40, 45, 56, 60, 64, 75]
+            }
+        },
+        size: {
+            height: 180
         }
-    },
-    size: {
-        height: 180
-    }
+    });
 });
 
-/*setTimeout(function () {
- chart.load({
- columns: [['data', 10]]
- });
- }, 1000);
 
- setTimeout(function () {
- chart.load({
- columns: [['data', 50]]
- });
- }, 2000);
+/*const LAZO_JHQJ = [{
+ "from": "j",
+ "to": "h",
+ function
+ }];*/
 
- setTimeout(function () {
- chart.load({
- columns: [['data', 70]]
- });
- }, 3000);
 
- setTimeout(function () {
- chart.load({
- columns: [['data', 0]]
- });
- }, 4000);
+var modificar = function (id) {
 
- setTimeout(function () {
- chart.load({
- columns: [['data', 100]]
- });
- }, 5000);*/
+    switch (id) {
+        case "J":
+            window["chart-H"].load({columns: [['data', value]]});
+            window["chart-Q"].load({columns: [['data', value]]});
+
+
+    }
+
+
+}
+

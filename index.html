@@ -5,152 +5,86 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head>
-        <title>Seguridad</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>Seguridad</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="scripts/libs/bootstrap-3.3.6-dist/css/bootstrap.min.css">
 
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="scripts/libs/bootstrap-3.3.6-dist/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="scripts/libs/bootstrap-3.3.6-dist/css/bootstrap-theme.min.css">
 
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="scripts/libs/bootstrap-3.3.6-dist/css/bootstrap-theme.min.css">
-
-        <!-- Latest compiled and minified JavaScript -->
-
+    <!-- Latest compiled and minified JavaScript -->
 
 
+    <!-- Load c3.css -->
+    <link href="scripts/libs/c3-b03125fa.css" rel="stylesheet" type="text/css">
+    <link href="scripts/libs/slider/css/slider.css" rel="stylesheet" type="text/css">
 
-        <!-- Load c3.css -->
-        <link href="scripts/libs/c3-b03125fa.css" rel="stylesheet" type="text/css">
-        <link href="scripts/libs/slider/css/slider.css" rel="stylesheet" type="text/css">
-
-        <!-- Load d3.js and c3.js -->
-        <script src="scripts/libs/jquery-1.11.0.min-910066fb.js" charset="utf-8"></script>
-        <script src="scripts/libs/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
-        <script src="scripts/libs/d3-3.5.0.min-3b564392.js" charset="utf-8"></script>
-        <script src="scripts/libs/slider/js/bootstrap-slider.js"></script>
-        <script src="scripts/libs/c3.min-12912fb6.js"></script>
+    <!-- Load d3.js and c3.js -->
+    <script src="scripts/libs/jquery-1.11.0.min-910066fb.js" charset="utf-8"></script>
+    <script src="scripts/libs/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+    <script src="scripts/libs/d3-3.5.0.min-3b564392.js" charset="utf-8"></script>
+    <script src="scripts/libs/slider/js/bootstrap-slider.js"></script>
+    <script src="scripts/libs/c3.min-12912fb6.js"></script>
 
 
-    </head>
-    <body>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 class="page-header">Titulito</h1>  
-                </div>
-            </div>
-            <div class="row">
-                
-                <!-- H -->
-                <div class="col-md-3">
-                    <p>Hola</p>
-                    <div id="chart-H"></div>
-                </div>
-                <div class="col-md-1">
-                    <input type="text" id="slider-H" value="91.5" data-slider-min="0" data-slider-max="100" data-slider-step=".5" data-slider-value="-14" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide">
-                </div>
-                <!-- A -->
-                <div class="col-md-3">
-                    <div id="chart-1"></div>
-                </div>
-                <div class="col-md-1">
-                    <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step=".5" data-slider-value="-14" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide">
-                </div>
-                <!-- A -->
-                <div class="col-md-3">
-                    <div id="chart-2"></div>
-                </div>
-                <div class="col-md-1">
-                    <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step=".5" data-slider-value="-14" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide">
-                </div>
-            </div>
-            
-            <div class="row">
-                
-                <!-- A -->
-                <div class="col-md-3">
-                    <p>Hola</p>
-                    <div id="chart-1"></div>
-                </div>
-                <div class="col-md-1">
-                    <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step=".5" data-slider-value="-14" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide">
-                </div>
-                <!-- A -->
-                <div class="col-md-3">
-                    <div id="chart-1"></div>
-                </div>
-                <div class="col-md-1">
-                    <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step=".5" data-slider-value="-14" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide">
-                </div>
-                <!-- A -->
-                <div class="col-md-3">
-                    <div id="chart-1"></div>
-                </div>
-                <div class="col-md-1">
-                    <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step=".5" data-slider-value="-14" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide">
-                </div>
-            </div>
-            
-            <div class="row">
-                
-                <!-- A -->
-                <div class="col-md-3">
-                    <p>Hola</p>
-                    <div id="chart-1"></div>
-                </div>
-                <div class="col-md-1">
-                    <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step=".5" data-slider-value="-14" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide">
-                </div>
-                <!-- A -->
-                <div class="col-md-3">
-                    <div id="chart-1"></div>
-                </div>
-                <div class="col-md-1">
-                    <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step=".5" data-slider-value="-14" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide">
-                </div>
-                <!-- A -->
-                
-                <div class="col-md-3">
-                    <div id="chart-1"></div>
-                </div>
-                <div class="col-md-1">
-                    <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step=".5" data-slider-value="-14" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide">
-                </div>
-            </div>
-            
-            <div class="row">
-                
-                <!-- A -->
-                <div class="col-md-3">
-                    <p>Hola</p>
-                    <div id="chart-1"></div>
-                </div>
-                <div class="col-md-1">
-                    <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step=".5" data-slider-value="-14" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide">
-                </div>
-                <!-- A -->
-                <div class="col-md-3">
-                    <div id="chart-1"></div>
-                </div>
-                <div class="col-md-1">
-                    <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step=".5" data-slider-value="-14" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide">
-                </div>
-                <!-- A -->
-                <div class="col-md-3">
-                    <div id="chart-1"></div>
-                </div>
-                <div class="col-md-1">
-                    <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step=".5" data-slider-value="-14" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide">
-                </div>
-            </div>
-            
-            
-            <div></div>
-            <script src="scripts/chart_gauge-f691ebb1.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="page-header">Titulito</h1>
         </div>
-    </body>
+    </div>
+    <div class="row">
+
+        <!-- H -->
+        <div class="col-md-3">
+            <p>Caídas del sistema (cuantas al mes) (H)</p>
+
+            <div class="chart" id="chart-H"></div>
+        </div>
+        <div class="col-md-1">
+            <input type="text" id="slider-H" class="slider" data-component="H" value="91.5" data-slider-min="0"
+                   data-slider-max="100" data-slider-step=".5" data-slider-value="-14"
+                   data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide">
+        </div>
+
+        <!-- J -->
+        <div class="col-md-3">
+            <p>Indicadores transacciones erróneas empleados. (Q)</p>
+
+            <div class="chart" id="chart-Q"></div>
+        </div>
+        <div class="col-md-1">
+            <input type="text" id="slider-Q" class="slider" data-component="Q" value="91.5" data-slider-min="0"
+                   data-slider-max="100" data-slider-step=".5" data-slider-value="-14"
+                   data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide">
+        </div>
+
+        <!-- I -->
+        <div class="col-md-3">
+            <p>Transacciones (fraude informático) (J)</p>
+
+            <div class="chart" id="chart-J"></div>
+        </div>
+        <div class="col-md-1">
+            <input type="text" id="slider-J" class="slider" data-component="J" value="91.5" data-slider-min="0"
+                   data-slider-max="100" data-slider-step=".5" data-slider-value="-14"
+                   data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide">
+        </div>
+
+    </div>
+
+    <div class="row">
+
+
+    </div>
+    <script src="scripts/chart_gauge-f691ebb1.js"></script>
+</div>
+</body>
 </html>
