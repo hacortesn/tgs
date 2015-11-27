@@ -1,28 +1,93 @@
-var init = ["J", "Q", "H"]
+var whoIsSliding = "";
+
+var items = {
+    "H": {
+        "listenTo": ["J"],
+        "triggerTo": ["Q"]
+    },
+    "Q": {
+        listenTo: ["H"],
+        "triggerTo": ["J"]
+    },
+    "J": {
+        listenTo: ["Q"],
+        "triggerTo": ["H"]
+    }
+};
+
+
 $(".slider").each(function (i, e) {
     var id = $(e).attr("id");
 
-    window[id] = $("#" + id).slider({
-        reversed: true
-    }).on("slide", function (e) {
-        var chart = $(e.target).attr("data-component");
-        var value = e.value;
+    var component = $(e).attr("data-component");
 
-        for (var x in init) {
-            var component = "slider-" + init[x];
-            if (component != id)
-                window[component].setValue(value)
-            console.log("c " + component + "; id" + id)
+    window[id] = $("#" + id).slider({reverse: true, "triggerChangeEvent": true})
+        .on("slide", function (e) {
+            var chart = $(e.target).attr("data-component");
+            var value = e.value;
+            whoIsSliding = chart;
 
+            /*for (var x in init) {
+             var component = "slider-" + init[x];
+             if (component != id)
+             window[component].setValue(value)
+             console.log("c " + component + "; id" + id)
+
+             }*/
+
+            window["chart-" + chart].load({columns: [['data', value]]});
+
+            if (items.hasOwnProperty(component)) {
+                var triggerTo = pojo.triggerTo;
+
+                for (var j in triggerTo) {
+
+                    if (triggerTo[j] != whoIsSliding) {
+                        $(window["slider-" + triggerTo[j]]).trigger("event-" + chart, [chart, value]);
+                    }
+                }
+            }
+
+
+            //var value = sliderH.getValue();
+            //console.log("id = " + id);
+            //window["chart-" + chart].load({columns: [['data', value]]});
+
+
+            //modificar(chart, value);
+
+        })
+        .on("change", function (e, o, n) {
+
+            console.log("hhhhhh", e.value.newValue, n)
+            console.log("cambiando " + component + " new = " + this.getValue())
+            //window["chart-" + component].load({columns: [['data', value]]});
+        })
+        .data('slider');
+
+
+    if (items.hasOwnProperty(component)) {
+        var pojo = items[component];
+        var listenTos = pojo.listenTo;
+
+        for (var j in listenTos) {
+            var listenTo = listenTos[j];
+            console.log(component + " listens event-" + listenTo)
+            $(window["slider-" + component]).on("event-" + listenTo, function (e, from, value) {
+
+                console.log("me ", component, "from = ", from, "value", value, " who" + whoIsSliding);
+                window["slider-" + component].setValue(value, true, true);
+
+            });
+            /*$(window[id]).on("eventico", function (e, from, value) {
+             console.log(from, value, whoIsSliding)
+             });*/
         }
+    }
 
-
-        //var value = sliderH.getValue();
-        console.log("id = " + chart);
-        //window["chart-" + chart].load({columns: [['data', value]]});
-
-        modificar(chart, value);
-    }).data('slider');
+    /*$(window[id]).on("eventico", function (e, from, value) {
+     console.log(from, value, whoIsSliding)
+     });*/
 
 });
 
@@ -45,18 +110,18 @@ $(".chart").each(function (i, e) {
                 ['data', 50]
             ],
             type: 'gauge',
-            onclick: function (d, i) {
-                console.log("onclick", d, i);
-            },
-            onmouseover: function (d, i) {
-                console.log("onmouseover", d, i);
-            },
-            onmouseout: function (d, i) {
-                console.log("onmouseout", d, i);
-            },
-            onmouseclick: function (d, i) {
-                console.log("click ", "-" + d + "-", i);
-            }
+            /*onclick: function (d, i) {
+             console.log("onclick", d, i);
+             },
+             onmouseover: function (d, i) {
+             console.log("onmouseover", d, i);
+             },
+             onmouseout: function (d, i) {
+             console.log("onmouseout", d, i);
+             },
+             onmouseclick: function (d, i) {
+             console.log("click ", "-" + d + "-", i);
+             }*/
 
         },
         gauge: {
@@ -94,16 +159,7 @@ $(".chart").each(function (i, e) {
 
 
 var modificar = function (id, value) {
-    console.log("ddd" + id);
-    switch (id) {
-        case "J":
-            window["chart-H"].load({columns: [['data', value]]});
-            window["chart-Q"].load({columns: [['data', 100- value]]});
-            break;
-
-
-    }
-
-
-}
+    if (laces1.indexOf(id) != -1)
+        cliclo1(id, value)
+};
 
