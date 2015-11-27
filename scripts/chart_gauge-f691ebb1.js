@@ -19,7 +19,9 @@ $(".slider").each(function (i, e) {
 
         //var value = sliderH.getValue();
         console.log("id = " + chart);
-        window["chart-" + chart].load({columns: [['data', value]]});
+        //window["chart-" + chart].load({columns: [['data', value]]});
+
+        modificar(chart, value);
     }).data('slider');
 
 });
@@ -91,12 +93,13 @@ $(".chart").each(function (i, e) {
  }];*/
 
 
-var modificar = function (id) {
-
+var modificar = function (id, value) {
+    console.log("ddd" + id);
     switch (id) {
         case "J":
             window["chart-H"].load({columns: [['data', value]]});
-            window["chart-Q"].load({columns: [['data', value]]});
+            window["chart-Q"].load({columns: [['data', 100- value]]});
+            break;
 
 
     }
