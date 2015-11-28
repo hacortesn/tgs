@@ -1,21 +1,4 @@
 var whoIsSliding = "";
-
-var items = {
-    "H": {
-        "listenTo": ["J"],
-        "triggerTo": ["Q"]
-    },
-    "Q": {
-        listenTo: ["H"],
-        "triggerTo": ["J"]
-    },
-    "J": {
-        listenTo: ["Q"],
-        "triggerTo": ["H"]
-    }
-};
-
-
 $(".slider").each(function (i, e) {
     var id = $(e).attr("id");
 
@@ -26,44 +9,22 @@ $(".slider").each(function (i, e) {
             var chart = $(e.target).attr("data-component");
             var value = e.value;
             whoIsSliding = chart;
-
-            /*for (var x in init) {
-             var component = "slider-" + init[x];
-             if (component != id)
-             window[component].setValue(value)
-             console.log("c " + component + "; id" + id)
-
-             }*/
-
-            window["chart-" + chart].load({columns: [['data', value]]});
-
-            if (items.hasOwnProperty(component)) {
-                var triggerTo = pojo.triggerTo;
-
-                for (var j in triggerTo) {
-
-                    if (triggerTo[j] != whoIsSliding) {
-                        $(window["slider-" + triggerTo[j]]).trigger("event-" + chart, [chart, value]);
-                    }
-                }
-            }
-
-
-            //var value = sliderH.getValue();
-            //console.log("id = " + id);
-            //window["chart-" + chart].load({columns: [['data', value]]});
-
-
-            //modificar(chart, value);
+            triggerTo(component, chart, value);
 
         })
         .on("change", function (e, o, n) {
+            console.log("click");
+            var chart = $(e.target).attr("data-component");
+            var value = e.value.newValue;
+            if (whoIsSliding == "")
+                whoIsSliding = chart;
 
-            console.log("hhhhhh", e.value.newValue, n)
-            console.log("cambiando " + component + " new = " + this.getValue())
-            //window["chart-" + component].load({columns: [['data', value]]});
+            triggerTo(component, chart, value);
+
         })
         .data('slider');
+
+    window[id].setValue(50)
 
 
     if (items.hasOwnProperty(component)) {
@@ -75,8 +36,9 @@ $(".slider").each(function (i, e) {
             console.log(component + " listens event-" + listenTo)
             $(window["slider-" + component]).on("event-" + listenTo, function (e, from, value) {
 
-                console.log("me ", component, "from = ", from, "value", value, " who" + whoIsSliding);
-                window["slider-" + component].setValue(value, true, true);
+                //$(window["slider-" + component]).trigger('change')
+                window["chart-" + component].load({columns: [['data', value]]});
+                window["slider-" + component].setValue(value, false, true);
 
             });
             /*$(window[id]).on("eventico", function (e, from, value) {
