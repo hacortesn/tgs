@@ -20,6 +20,7 @@ function triggerTo(component, chart, value) {
                 if (triggerTo[j].to == "F") {
                     switch (whoIsSliding) {
                         case "O":
+                        case "Q":
                         case "L":
                         case "C":
                         case "H":
@@ -36,10 +37,10 @@ function triggerTo(component, chart, value) {
                             console.log("llwgó acá?? CCCC")
                             break;
                     }
-                } else if(triggerTo[j].to == "H") {
+                } else if (triggerTo[j].to == "H") {
                     switch (whoIsSliding) {
                         case "F":
-                        //case "D":
+                            //case "D":
                             whoIsSliding = "H";
                             console.log("llwgó acá?? CCCC")
                             break;
