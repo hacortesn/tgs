@@ -13,7 +13,7 @@ $(".slider").each(function (i, e) {
 
         })
         .on("change", function (e, o, n) {
-            console.log("click");
+            //console.log("click");
             var chart = $(e.target).attr("data-component");
             var value = e.value.newValue;
             if (whoIsSliding == "")
@@ -33,7 +33,8 @@ $(".slider").each(function (i, e) {
 
         for (var j in listenTos) {
             var listenTo = listenTos[j];
-            console.log(component + " listens event-" + listenTo)
+
+            //console.log(component + " listens " + listenTo)
             $(window["slider-" + component]).on("event-" + listenTo, function (e, from, value) {
 
                 //$(window["slider-" + component]).trigger('change')
@@ -44,6 +45,12 @@ $(".slider").each(function (i, e) {
             /*$(window[id]).on("eventico", function (e, from, value) {
              console.log(from, value, whoIsSliding)
              });*/
+        }
+
+        var triggers = pojo.triggerTo;
+        for (var j in triggers) {
+            var tr = triggers[j];
+            //console.log("component " + component + " trigger to " + tr.to);
         }
     }
 
